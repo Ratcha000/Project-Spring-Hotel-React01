@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { getRoomById } from '../utils/Apifunctions'
 import { useParams } from 'react-router-dom'
 import moment from "moment"
+import { bookRoom } from '../utils/ApiFunctions'
 
 const BookingForm = () => {
     const[isValidated, setIsValidated]= useState(false)
@@ -23,6 +24,7 @@ const BookingForm = () => {
     })
 
     const{roomId} = useParams()
+    const navigate = useNavigate()
 
     const handleInputChange = (e) =>{
         const{name, value} = e.target
@@ -78,4 +80,19 @@ const BookingForm = () => {
         }
         setIsValidated(true)
     }
+
+    const handleBooking = async () => {
+        try{
+            const confirmationCode = await bookRoom(roomId, booking)
+            setIsSubmitted(true)
+            navigate("/", {state:{message : confirmationCode}})
+        }catch(error){
+            setErrorMessage(error.message)
+            navigate("/", {state:{ errror : errorMessage}})
+        }
+    }
+
+    return <div></div>
 }
+
+export default BookingForm
