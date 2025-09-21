@@ -13,5 +13,10 @@ const BookingForm = () => {
         numberOfAdults : "",
         numberOfChildren : "",
     })
-    
+
+    const handleInputChange = (e) =>{
+        const{name, value} = e.target
+        setBooking({...booking, [name]: value})
+        setErrorMessage("")
+    }
 }
