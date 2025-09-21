@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { getRoomById } from '../utils/Apifunctions'
+import { useParams } from 'react-router-dom'
+import moment from "moment"
 
 const BookingForm = () => {
     const[isValidated, setIsValidated]= useState(false)
@@ -39,5 +42,12 @@ const BookingForm = () => {
     useEffect(() => {
         getRoomPriceById(roomId)
     }, [roomId])
-   
+
+    const calculatePayment = ()=>{
+        const checkInDate = moment(booking.checkInDate)
+        const checkOutDate = momen(booking.checkOutDate)
+        const diffInDays = checkOutDate.diff(checkInDate)
+        const price = roomPrice ? roomPrice : 0
+        return diffInDays * price
+    }
 }
