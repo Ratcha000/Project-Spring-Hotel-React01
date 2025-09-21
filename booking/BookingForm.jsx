@@ -57,4 +57,14 @@ const BookingForm = () => {
         const totalCount = adultCount + childrenCount
         return totalCount >=1 && adultCount >= 1
     }
+
+    const isCheckOutDateValid = () =>{
+        if(!moment(booking.checkOutDate) .isSameOrAfter(moment(booking.checkInDate))){
+            setErrorMessage("Check-out date must come before check-in date")
+            return false
+        }else{
+            setErrorMessage("")
+            return(true)
+        }
+    }
 }
