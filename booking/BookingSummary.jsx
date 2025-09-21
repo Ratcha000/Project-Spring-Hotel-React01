@@ -8,7 +8,14 @@ const BookingSummary = ({booking, payment, isFormValid, onConfirm}) => {
     const[isBookingConfirmed, setIsBookingConfirmed] = useState(false)
     const[isProcessingPayment, setIsBookingPayment] = useState(false)
 
-    
+    const handleConfirmBooking =() =>{
+        setISProcessingPayment(true)
+        setTimeout(() => {
+            setISProcessingPayment(false)
+            setIsBookingConfirmed(true)
+            onConfirm()
+        }, 3000)
+    }
 
     return (
         <div>
