@@ -19,6 +19,8 @@ const BookingForm = () => {
         roomPrice : ""
     })
 
+    const{roomId} = useParams()
+
     const handleInputChange = (e) =>{
         const{name, value} = e.target
         setBooking({...booking, [name]: value})
@@ -33,5 +35,9 @@ const BookingForm = () => {
             throw new Error(error)
         }
     }
+
+    useEffect(() => {
+        getRoomPriceById(roomId)
+    }, [roomId])
    
 }
