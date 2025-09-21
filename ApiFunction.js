@@ -10,3 +10,12 @@ try{
     }
   }
 }
+
+export async function getAllBookings() {
+    try{
+        const result = await api.get("/bookings/all-bookings")
+        return result.data
+    }catch(error){
+        throw new Error('Error fetching bookings : ${error.message}')
+    }
+}
