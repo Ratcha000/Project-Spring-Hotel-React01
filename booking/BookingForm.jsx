@@ -25,5 +25,13 @@ const BookingForm = () => {
         setErrorMessage("")
     }
 
+    const getRoomPriceById = async(roomId) =>{
+        try{
+            const response = await getRoomPriceById(roomId)
+            setRoomPrice(response.roomPrice)
+        }catch(error){
+            throw new Error(error)
+        }
+    }
    
 }
