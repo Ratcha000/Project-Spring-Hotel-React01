@@ -67,4 +67,15 @@ const BookingForm = () => {
             return(true)
         }
     }
+
+    const handlesubmit = (e)=>{
+        e.preventDefault()
+        const from = e.currentTarget
+        if (form.checkValidity()=== false || !isGuestCountValid() || !isCheckOutDateValid()){
+            e.stopPropagation()
+        } else {
+            setIsSubmitted(true)
+        }
+        setIsValidated(true)
+    }
 }
